@@ -1,0 +1,81 @@
+body {
+    font-family: Inter, system-ui, Arial;
+    margin: 0;
+    background: #0f1724;
+    color: #e6eef8;
+}
+
+header {
+    padding: 16px;
+    background: linear-gradient(90deg, #0b1220, #152036);
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.left {
+    width: 360px;
+    max-height: calc(100vh - 88px);
+    overflow: auto;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pokemon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pokemon-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    color: inherit;
+}
+
+.pokemon-item img {
+    image-rendering: pixelated;
+}
+
+.pokemon-card {
+    display: flex;
+    gap: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    padding: 16px;
+    border-radius: 12px;
+    width: 540px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.pokemon-card img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+}
+
+.loading,
+.error {
+    padding: 16px;
+}
