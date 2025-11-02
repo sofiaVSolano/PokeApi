@@ -59,6 +59,7 @@ a {
   position: absolute;
   width: 46vmax;
   height: 36vmax;
+  margin-top: 100px;
   transform: perspective(10000px) rotateX(55deg) rotateZ(25deg) translateZ(-5vw);
   transition: transform 0.2s;
 }
@@ -449,7 +450,7 @@ a {
           brightness(1.2) contrast(1.15);
   animation: pokemon-pop-3d 0.8s ease-out forwards, pokemon-rotate 4s ease-in-out infinite 0.8s;
   will-change: transform;
-  margin-top: -20px;
+  margin-top: -2px;
   transform-style: preserve-3d;
   position: relative;
 }
