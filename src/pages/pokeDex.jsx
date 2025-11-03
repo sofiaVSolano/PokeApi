@@ -3,17 +3,22 @@ import React, { useEffect, useState } from "react";
 import "../styles/styles.css";
 import { LoadPokedex } from "../scripts/PokedexLogic";
 import { fetchPokemons } from "../api/pokeService";
+import { usePokemonActions } from "../context/PokemonContext";
+
 
 export default function Pokedex() {
     const [pokelist, setPokelist] = useState([]);
     const [current, setCurrent] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
+    const { dispatch } = usePokemonActions();
+    
+
 
     useEffect(() => {
         let mounted = true;
         (async () => {
             try {
-                const data = await fetchPokemons(10, 0);
+                const data = await fetchPokemons(15, 0);
                 if (!mounted) return;
                 const list = Array.isArray(data) ? data : (data.results || []);
                 setPokelist(list);
@@ -47,6 +52,12 @@ export default function Pokedex() {
     };
 
     const currentPokemon = pokelist[current];
+    useEffect(() => {
+        if (currentPokemon) {
+            dispatch({ type: "SELECT", payload: currentPokemon });
+        }
+    }, [currentPokemon, dispatch]);
+
 
     if (pokelist.length === 0) {
         return (
