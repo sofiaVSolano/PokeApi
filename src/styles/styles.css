@@ -27,15 +27,20 @@
 }
 
 /* Generic */
+/* Generic */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #3647bd;
+  background-image: url("https://preview.redd.it/dnlz6c3xni951.jpg?auto=webp&s=f0424de1b7a9986af9cdb82f8976f5632049e1f2");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: "Press Start 2P", cursive;
 }
+
 
 a {
   cursor: pointer;
@@ -1191,3 +1196,123 @@ a {
 }
 
 /*# sourceMappingURL=styles.css.map */
+/* overlay que posiciona la tarjeta 3D hacia la izquierda de la Pokédex */
+.three-card-overlay {
+  position: fixed;
+  left: 6.5vw;   /* mover a la izquierda/ajusta según necesites */
+  top: 32vh;     /* mover arriba/abajo hasta que quede en tu círculo */
+  z-index: 9999;
+  pointer-events: auto;
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+/* animación de entrada */
+.three-card-overlay > div {
+  transform-origin: left center;
+  animation: popIn 260ms cubic-bezier(.2,.9,.2,1);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-6%) scale(0.94) rotateX(6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateX(0deg);
+  }
+}
+
+/* móvil: escalado y posicionamiento responsivo */
+@media (max-width: 900px) {
+  .three-card-overlay {
+    left: 4vw;
+    top: 22vh;
+  }
+}
+.right canvas {
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  background: radial-gradient(circle at center, #1e1e2f, #0f1724);
+}
+/* ----- Layout general ----- */
+.pokedex-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #2b2b2b 0%, #202020 100%);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* ----- Tarjeta del Pokémon ----- */
+.pokemon-card {
+  background: #2f323a;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #f4f4f4;
+  font-family: "Press Start 2P", cursive;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 35px rgba(255, 255, 255, 0.15);
+}
+
+.pokemon-card-image {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.pokemon-card-name {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.pokemon-card-types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pokemon-card-type {
+  background: #ff5350;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+}
+
+/* ----- Pantalla de carga ----- */
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3647bd;
+  color: #dedede;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5vmax;
+}
+.pokemon-3d-card {
+  background: linear-gradient(135deg, #f0f0f0, #dcdcdc);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.pokemon-3d-card:hover {
+  transform: scale(1.05);
+}
